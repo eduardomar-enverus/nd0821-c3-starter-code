@@ -7,7 +7,8 @@ from starter.starter.ml.data import process_data, categorical_features
 # Add the necessary imports for the starter code.
 from starter.starter.ml.model import train_model, compute_model_metrics
 
-data = pd.read_csv("../data/census_clean.csv")
+data = pd.read_csv("../data/census_clean.csv", index_col=False)
+
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
 
 train, test = train_test_split(data, test_size=0.20)
@@ -19,7 +20,7 @@ X_train, y_train, encoder, lb = process_data(train, categorical_features=cat_fea
 
 # Process the test data with the process_data function.
 X_test, y_test, encoder, _ = process_data(
-    train, categorical_features=cat_features, label="salary", training=False, encoder=encoder
+    test, categorical_features=cat_features, label="salary", training=False, encoder=encoder
 )
 
 # Train model.
@@ -32,6 +33,14 @@ with open("../model/model.pkl", "wb") as f:
 # Predictions
 predictions = clf.predict(X_test)
 
-# Metrics
+# General Metrics
 y_test = lb.fit_transform(y_test.values).ravel()
 precision, recall, fbeta = compute_model_metrics(y_test, predictions)
+
+print("General metrics")
+print(f"Precision = {precision}")
+print(f"Recall = {recall}")
+print(f"FBeta = {fbeta}")
+
+# Group Metrics
+
