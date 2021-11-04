@@ -1,0 +1,76 @@
+#!/bin/bash
+set -e
+
+################################################################################
+# VARIABLES
+
+#CONTAINER_REGISTRY=''
+#CONTAINER_REPOSITORY=''
+SOURCE_DIRECTORY='starter'
+
+################################################################################
+# TASKFILE VARIABLES
+
+# Determine Operating System, set OS specific overrides
+case $OSTYPE in
+    darwin*)
+    OS_TYPE=darwin
+    ;;
+    freebsd*)
+    OS_TYPE=freebsd
+    ;;
+esac
+OS_TYPE=${OS_TYPE:-$OSTYPE}
+
+PIP_CONFIG_FILE=${PIP_CONFIG_FILE:-~/.pip/pip.conf}
+PYPIRC_FILE=${PYPIRC_FILE:-~/.pypirc}
+
+################################################################################
+# HELPER FUNCTIONS
+
+function errcho { >&2 echo $@; }
+
+
+
+###
+# FUNCTIONS
+function format-apply {
+  python -m black ${SOURCE_DIRECTORY} -l 119 -t py36 "$@"
+}
+
+
+###############################################################################
+# DEFAULT => INFO
+
+function _default {
+  echo "$(basename "$0") <task> <args>"
+  echo
+  echo "Available tasks:"
+  compgen -A function | grep -v '^_' | grep -v '^errcho' | cat -n
+}
+
+################################################################################
+# PARSE GLOBAL PARAMETERS
+
+while [[ $# -gt 0 ]]; do
+key="$1"
+
+case $key in
+    --disable-numba)
+    errcho "NUMBA: DISABLED"
+    NUMBA_DISABLE_JIT=1
+    shift # past value
+    ;;
+    --debug)
+    DEBUG=YES
+    shift # past argument
+    ;;
+    *)
+    params+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+
+TIMEFORMAT="Task completed in %3lR"
+time ${params[@]:-_default}

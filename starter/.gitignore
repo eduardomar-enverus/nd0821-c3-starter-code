@@ -3,3 +3,5 @@ scratch.py
 /model
 *__pycache__*
 .idea/
+AWSCLIV2.pkg
+keys_test
