@@ -6,7 +6,7 @@ set -e
 
 #CONTAINER_REGISTRY=''
 #CONTAINER_REPOSITORY=''
-SOURCE_DIRECTORY='starter'
+SOURCE_DIRECTORY='project3'
 
 ################################################################################
 # TASKFILE VARIABLES
@@ -35,7 +35,7 @@ function errcho { >&2 echo $@; }
 ###
 # FUNCTIONS
 function format-apply {
-  python -m black ${SOURCE_DIRECTORY} -l 119 -t py36 "$@"
+  python -m black ${SOURCE_DIRECTORY} tests -l 119 -t py36 "$@"
 }
 
 

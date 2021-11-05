@@ -2,10 +2,10 @@
 import pickle
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from starter.starter.ml.data import process_data, categorical_features
+from project3.ml.data import process_data, categorical_features
 
-# Add the necessary imports for the starter code.
-from starter.starter.ml.model import train_model, compute_model_metrics
+# Add the necessary imports for the delete code.
+from project3.ml.model import train_model, compute_model_metrics, slice_inference
 
 data = pd.read_csv("../data/census_clean.csv", index_col=False)
 
@@ -42,5 +42,5 @@ print(f"Precision = {precision}")
 print(f"Recall = {recall}")
 print(f"FBeta = {fbeta}")
 
-# Group Metrics
-
+# Slice Metrics
+slice_inference(predictions, y_test, test.reset_index(drop=True), cat_features)

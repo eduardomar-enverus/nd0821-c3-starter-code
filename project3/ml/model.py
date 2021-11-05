@@ -61,18 +61,19 @@ def inference(model, X):
     return preds
 
 
-# TODO: Write a function that outputs the performance of the model on slices of the data.
-def slice_inference(predictions, y, data, categorical_features):
+def slice_inference(predictions, y, data, categorical_features, printed=False):
     for category in categorical_features:
-        for cat_value in sorted(X[category].unique()):
+        for cat_value in sorted(data[category].unique()):
             mask = data[data[category] == cat_value].index
             mask_predictions = predictions[mask]
             mask_y = y[mask]
 
             precision, recall, fbeta = compute_model_metrics(mask_y, mask_predictions)
 
-            print(f"Slice metrics - Feature {category} - Value {categorical_features}")
-            print(f"Precision = {precision}")
-            print(f"Recall = {recall}")
-            print(f"FBeta = {fbeta}")
-
+            if printed:
+                print(f"Slice metrics - Feature: {category} - Value: {cat_value}")
+                print(f"Category percent {round(100*len(mask)/len(data),2)}")
+                print(f"Precision = {precision}")
+                print(f"Recall = {recall}")
+                print(f"FBeta = {fbeta}")
+                print()
