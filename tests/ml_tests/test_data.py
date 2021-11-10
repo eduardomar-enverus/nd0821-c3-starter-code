@@ -56,4 +56,3 @@ def test_process_data():
     np.testing.assert_array_equal(y, y_array)
     assert type(lb) == sklearn.preprocessing._label.LabelBinarizer
     assert type(encoder) == sklearn.preprocessing._encoders.OneHotEncoder
-
