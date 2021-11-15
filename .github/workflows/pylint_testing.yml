@@ -25,11 +25,15 @@ jobs:
     - name: Analysing the code with pylint
       run: |
         pylint --max-line-length=140 project tests |
-        tee pylint.txt |
-        pytest tests
+        tee pylint.txt
     
     - name: Upload pylint.txt as artifact
       uses: actions/upload-artifact@v2
       with:
         name: pylint report
         path: pylint.txt
+        
+    - name: Unit testing
+      run: |
+        pytest tests
+      
