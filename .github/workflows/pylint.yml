@@ -24,4 +24,4 @@ jobs:
         
     - name: Analysing the code with pylint
       run: |
-        pylint --max-line-length=140 `ls -R|grep .py$|xargs`
+        pylint --max-line-length=140 project tests
