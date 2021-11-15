@@ -10,7 +10,7 @@ def test_categorical_features():
         {"Cat_1": ["a", "b", "c"], "Cat_2": ["a", "b", "c"], "Num_1": [1, 2, 3], "Num_2": [1.0, 2.0, 3.0],}
     )
     cat_list = categorical_features(df)
-    expected_list = ["Cat_2", "Cat_1"]
+    expected_list = ["Cat_1", "Cat_2"]
     assert cat_list == expected_list
 
 
