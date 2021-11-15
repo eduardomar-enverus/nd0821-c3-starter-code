@@ -1,7 +1,7 @@
 import numpy as np
 import sklearn
 
-from project3.ml.model import train_model, compute_model_metrics
+from project.ml.model import train_model, compute_model_metrics
 
 X_array = np.array(
     [

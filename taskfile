@@ -6,7 +6,7 @@ set -e
 
 #CONTAINER_REGISTRY=''
 #CONTAINER_REPOSITORY=''
-SOURCE_DIRECTORY='project3'
+SOURCE_DIRECTORY='project'
 
 ################################################################################
 # TASKFILE VARIABLES

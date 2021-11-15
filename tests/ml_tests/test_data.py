@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import sklearn
 
-from project3.ml.data import categorical_features, process_data
+from project.ml.data import categorical_features, process_data
 
 
 def test_categorical_features():
