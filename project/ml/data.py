@@ -22,7 +22,7 @@ def categorical_features(X: pd.DataFrame) -> List[str]:
     return cat_cols
 
 
-def process_data(X, categorical_features=[], label=None, training=True, encoder=None, lb=None):
+def process_data(X, categorical_features, keep_cat=[], label=None, training=True, encoder=None, lb=None):
     """ Process the data used in the machine learning pipeline.
 
     Processes the data using one hot encoding for the categorical features and a
@@ -72,7 +72,7 @@ def process_data(X, categorical_features=[], label=None, training=True, encoder=
     else:
         y = np.array([])
 
-    X_categorical = X[categorical_features].values
+    X_categorical = X[keep_cat].values
     X_continuous = X.drop(*[categorical_features], axis=1)
 
     if training is True:
