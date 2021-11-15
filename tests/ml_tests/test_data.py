@@ -11,6 +11,7 @@ def test_categorical_features():
     )
     cat_list = categorical_features(df)
     expected_list = ["Cat_1", "Cat_2"]
+
     assert cat_list == expected_list
 
 

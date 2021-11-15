@@ -18,6 +18,7 @@ def categorical_features(X: pd.DataFrame) -> List[str]:
     """
     num_cols = X._get_numeric_data().columns
     cat_cols = list(set(X.columns) - set(num_cols))
+    cat_cols = sorted(cat_cols)
     return cat_cols
 
 
