@@ -51,7 +51,7 @@ def test_process_data():
         ]
     )
     y_array = np.array([1, 0, 0, 0, 0, 0, 1, 0, 0, 1])
-    X, y, encoder, lb = process_data(df, ["workclass"], label="salary")
+    X, y, encoder, lb = process_data(df, ["workclass"], ["workclass"], label="salary")
 
     np.testing.assert_array_equal(X, X_array)
     np.testing.assert_array_equal(y, y_array)

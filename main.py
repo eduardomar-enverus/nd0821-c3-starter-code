@@ -5,9 +5,15 @@ import pickle
 import pandas as pd
 from census_class import CensusData
 
+import git
+
+repo = git.Repo('.', search_parent_directories=True)
+repo_pth = repo.working_tree_dir
+
+
 # Create the app object
 app = FastAPI()
-pickle_in = open("model/model.pkl", "rb")
+pickle_in = open(repo_pth+"/model/model.pkl", "rb")
 classifier = pickle.load(pickle_in)
 
 
@@ -17,7 +23,7 @@ async def say_hello():
     return {"greeting": "Hello World!"}
 
 
-@app.post("/predict")
+@app.post("/predict/")
 def predict_salary(data: CensusData):
     data = data.dict()
     age = data["age"]

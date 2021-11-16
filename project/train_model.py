@@ -28,19 +28,6 @@ X_test, y_test, encoder, _ = process_data(
 # Train model.
 clf = train_model(X_train, y_train)
 
-# # Save model, encoder, and labeler
-# filenames = ["model","encoder", "lb"]
-
-# for f in filenames:
-#     filehandler = open(f"../model/{f}.pkl", "wb")
-#     if f == "model":
-#         pickle.dump(model, filehandler)
-#     elif f == "encoder":
-#         pickle.dump(encoder, filehandler)
-#     elif f == "lb":
-#         pickle.dump(lb, filehandler)
-#     filehandler.close()
-
 with open("../model/model.pkl", "wb") as f:
     pickle.dump(clf, f)
 with open("../model/encoder.pkl", "wb") as f:
