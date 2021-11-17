@@ -5,7 +5,7 @@ import pickle
 import pandas as pd
 from census_class import CensusData
 
-import git
+# import git
 
 import os
 
