@@ -9,8 +9,8 @@ from census_class import CensusData
 
 import os
 
-repo = git.Repo('.', search_parent_directories=True)
-repo_pth = repo.working_tree_dir
+# repo = git.Repo('.', search_parent_directories=True)
+# repo_pth = repo.working_tree_dir
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
