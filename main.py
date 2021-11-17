@@ -21,7 +21,8 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
 
 # Create the app object
 app = FastAPI()
-pickle_in = open(repo_pth+"/model/model.pkl", "rb")
+# pickle_in = open(repo_pth+"/model/model.pkl", "rb")
+pickle_in = open("./model/model.pkl", "rb")
 classifier = pickle.load(pickle_in)
 
 
