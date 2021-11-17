@@ -1,0 +1,7 @@
+name: udacity-project
+dependencies:
+  - pip
+  - python=3.8.0
+  - dvc-s3
+  - pip:
+      - -r requirements.txt
