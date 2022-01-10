@@ -1,0 +1,120 @@
+Slice metrics - Feature: marital-status - Value: Divorced
+Category percent 13.39
+Precision = 0.5555555555555556
+Recall = 0.297029702970297
+FBeta = 0.3870967741935484
+
+Slice metrics - Feature: marital-status - Value: Married-AF-spouse
+Category percent 0.11
+Precision = 1.0
+Recall = 0.0
+FBeta = 0.0
+
+Slice metrics - Feature: marital-status - Value: Married-civ-spouse
+Category percent 46.46
+Precision = 0.8020050125313283
+Recall = 0.23272727272727273
+FBeta = 0.3607666290868095
+
+Slice metrics - Feature: marital-status - Value: Married-spouse-absent
+Category percent 1.43
+Precision = 0.8571428571428571
+Recall = 0.46153846153846156
+FBeta = 0.6
+
+Slice metrics - Feature: marital-status - Value: Never-married
+Category percent 32.47
+Precision = 0.4
+Recall = 0.27450980392156865
+FBeta = 0.32558139534883723
+
+Slice metrics - Feature: marital-status - Value: Separated
+Category percent 3.06
+Precision = 0.5
+Recall = 0.375
+FBeta = 0.42857142857142855
+
+Slice metrics - Feature: marital-status - Value: Widowed
+Category percent 3.09
+Precision = 0.3684210526315789
+Recall = 0.3888888888888889
+FBeta = 0.37837837837837834
+
+Slice metrics - Feature: race - Value: Amer-Indian-Eskimo
+Category percent 0.84
+Precision = 0.3333333333333333
+Recall = 0.16666666666666666
+FBeta = 0.2222222222222222
+
+Slice metrics - Feature: race - Value: Asian-Pac-Islander
+Category percent 3.29
+Precision = 0.782608695652174
+Recall = 0.25
+FBeta = 0.3789473684210527
+
+Slice metrics - Feature: race - Value: Black
+Category percent 9.86
+Precision = 0.5454545454545454
+Recall = 0.23076923076923078
+FBeta = 0.3243243243243243
+
+Slice metrics - Feature: race - Value: Other
+Category percent 0.71
+Precision = 0.75
+Recall = 0.6
+FBeta = 0.6666666666666665
+
+Slice metrics - Feature: race - Value: White
+Category percent 85.31
+Precision = 0.7195121951219512
+Recall = 0.24279835390946503
+FBeta = 0.3630769230769231
+
+Slice metrics - Feature: relationship - Value: Husband
+Category percent 40.53
+Precision = 0.7931034482758621
+Recall = 0.2321278385197645
+FBeta = 0.3591411841249187
+
+Slice metrics - Feature: relationship - Value: Not-in-family
+Category percent 25.49
+Precision = 0.5913978494623656
+Recall = 0.2972972972972973
+FBeta = 0.3956834532374101
+
+Slice metrics - Feature: relationship - Value: Other-relative
+Category percent 2.81
+Precision = 0.3333333333333333
+Recall = 0.375
+FBeta = 0.35294117647058826
+
+Slice metrics - Feature: relationship - Value: Own-child
+Category percent 15.83
+Precision = 0.23076923076923078
+Recall = 0.3333333333333333
+FBeta = 0.27272727272727276
+
+Slice metrics - Feature: relationship - Value: Unmarried
+Category percent 10.09
+Precision = 0.42424242424242425
+Recall = 0.34146341463414637
+FBeta = 0.37837837837837834
+
+Slice metrics - Feature: relationship - Value: Wife
+Category percent 5.25
+Precision = 0.8695652173913043
+Recall = 0.2247191011235955
+FBeta = 0.35714285714285715
+
+Slice metrics - Feature: sex - Value: Female
+Category percent 33.3
+Precision = 0.5819672131147541
+Recall = 0.2508833922261484
+FBeta = 0.35061728395061725
+
+Slice metrics - Feature: sex - Value: Male
+Category percent 66.7
+Precision = 0.745958429561201
+Recall = 0.24176646706586827
+FBeta = 0.36517806670435277
+

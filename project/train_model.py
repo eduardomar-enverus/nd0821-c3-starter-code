@@ -1,5 +1,7 @@
 # Script to train machine learning model.
 import pickle
+from contextlib import redirect_stdout
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from project.ml.data import process_data, categorical_features
@@ -15,7 +17,6 @@ train, test = train_test_split(data, test_size=0.20)
 
 cat_features = categorical_features(data)
 keep_cat = ["marital-status", "race", "relationship", "sex"]  # Limit sparsity
-keep_cat = ["sex"]  # Limit sparsity
 
 # Process training data
 X_train, y_train, encoder, lb = process_data(
@@ -39,6 +40,7 @@ X_test, y_test, encoder, _ = process_data(
 # Train model.
 clf = train_model(X_train, y_train)
 
+# Save model pickle files (model, enconder, labeler)
 with open("../model/model.pkl", "wb") as f:
     pickle.dump(clf, f)
 with open("../model/encoder.pkl", "wb") as f:
@@ -53,11 +55,13 @@ predictions = clf.predict(X_test)
 y_test = lb.fit_transform(y_test.values).ravel()
 precision, recall, fbeta = compute_model_metrics(y_test, predictions)
 
-print("General metrics")
-print(f"Precision = {precision}")
-print(f"Recall = {recall}")
-print(f"FBeta = {fbeta}")
-print()
+with open('general_output.txt', 'w') as f:
+    with redirect_stdout(f):
+        print("General metrics")
+        print(f"Precision = {precision}")
+        print(f"Recall = {recall}")
+        print(f"FBeta = {fbeta}")
+        print()
 
 # Slice Metrics
 slice_inference(
