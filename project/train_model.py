@@ -14,15 +14,26 @@ data = pd.read_csv("../data/census_clean.csv", index_col=False)
 train, test = train_test_split(data, test_size=0.20)
 
 cat_features = categorical_features(data)
-keep_cat = ["marital-status","race","relationship","sex"]  # Limit sparsity
+keep_cat = ["marital-status", "race", "relationship", "sex"]  # Limit sparsity
 keep_cat = ["sex"]  # Limit sparsity
 
 # Process training data
-X_train, y_train, encoder, lb = process_data(train, keep_cat=keep_cat, categorical_features=cat_features, label="salary", training=True)
+X_train, y_train, encoder, lb = process_data(
+    train,
+    keep_cat=keep_cat,
+    categorical_features=cat_features,
+    label="salary",
+    training=True,
+)
 
 # Process the test data with the process_data function.
 X_test, y_test, encoder, _ = process_data(
-    test, categorical_features=cat_features, keep_cat=keep_cat,label="salary", training=False, encoder=encoder
+    test,
+    categorical_features=cat_features,
+    keep_cat=keep_cat,
+    label="salary",
+    training=False,
+    encoder=encoder,
 )
 
 # Train model.
@@ -49,8 +60,10 @@ print(f"FBeta = {fbeta}")
 print()
 
 # Slice Metrics
-slice_inference(predictions, y_test, test.reset_index(drop=True), keep_cat, printed=True)
+slice_inference(
+    predictions, y_test, test.reset_index(drop=True), keep_cat, printed=True
+)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass

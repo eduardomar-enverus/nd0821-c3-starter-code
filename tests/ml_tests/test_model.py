@@ -37,7 +37,9 @@ def test_compute_model_metrics():
 
 def test_inference():
 
-    clf = sklearn.linear_model.LogisticRegression(random_state=42, max_iter=100).fit(X_array, y_array)
+    clf = sklearn.linear_model.LogisticRegression(random_state=42, max_iter=100).fit(
+        X_array, y_array
+    )
     predictions_model = clf.predict(X_array)
     expected_predictions = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     np.array_equal(predictions_model, expected_predictions)

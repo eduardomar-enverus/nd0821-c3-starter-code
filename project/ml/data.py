@@ -22,7 +22,15 @@ def categorical_features(X: pd.DataFrame) -> List[str]:
     return cat_cols
 
 
-def process_data(X, categorical_features, keep_cat=[], label=None, training=True, encoder=None, lb=None):
+def process_data(
+    X,
+    categorical_features,
+    keep_cat=[],
+    label=None,
+    training=True,
+    encoder=None,
+    lb=None,
+):
     """ Process the data used in the machine learning pipeline.
 
     Processes the data using one hot encoding for the categorical features and a

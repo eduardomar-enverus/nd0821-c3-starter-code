@@ -1,16 +1,7 @@
-import uvicorn
 from fastapi import FastAPI
-import numpy as np
 import pickle
-import pandas as pd
 from census_class import CensusData
-
-# import git
-
 import os
-
-# repo = git.Repo('.', search_parent_directories=True)
-# repo_pth = repo.working_tree_dir
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")
@@ -45,7 +36,18 @@ def predict_salary(data: CensusData):
     x3_Male = data["x3_Male"]
 
     prediction = classifier.predict(
-        [[age, fnlgt, education_num, capital_gain, capital_loss, hours_per_week, x3_Female, x3_Male]]
+        [
+            [
+                age,
+                fnlgt,
+                education_num,
+                capital_gain,
+                capital_loss,
+                hours_per_week,
+                x3_Female,
+                x3_Male,
+            ]
+        ]
     )
     if prediction[0] > 0.5:
         prediction = ">50k"

@@ -7,7 +7,12 @@ from project.ml.data import categorical_features, process_data
 
 def test_categorical_features():
     df = pd.DataFrame(
-        {"Cat_1": ["a", "b", "c"], "Cat_2": ["a", "b", "c"], "Num_1": [1, 2, 3], "Num_2": [1.0, 2.0, 3.0],}
+        {
+            "Cat_1": ["a", "b", "c"],
+            "Cat_2": ["a", "b", "c"],
+            "Num_1": [1, 2, 3],
+            "Num_2": [1.0, 2.0, 3.0],
+        }
     )
     cat_list = categorical_features(df)
     expected_list = ["Cat_1", "Cat_2"]
@@ -32,8 +37,30 @@ def test_process_data():
                 "Private",
                 "?",
             ],
-            "fnlgt": [59660, 163027, 126730, 44075, 236180, 113838, 381153, 168936, 308205, 28678],
-            "salary": [">50K", "<=50K", "<=50K", "<=50K", "<=50K", "<=50K", ">50K", "<=50K", "<=50K", ">50K"],
+            "fnlgt": [
+                59660,
+                163027,
+                126730,
+                44075,
+                236180,
+                113838,
+                381153,
+                168936,
+                308205,
+                28678,
+            ],
+            "salary": [
+                ">50K",
+                "<=50K",
+                "<=50K",
+                "<=50K",
+                "<=50K",
+                "<=50K",
+                ">50K",
+                "<=50K",
+                "<=50K",
+                ">50K",
+            ],
         }
     )
     X_array = np.array(
