@@ -1,3 +1,4 @@
+# Github Link: https://github.com/eduardomar-enverus/nd0821-c3-starter-code
 # This workflow installs apps python dependencies, lints and run tests on python version 3.8
 
 name: Python application heroku
@@ -37,23 +38,6 @@ jobs:
     - name: DVC Pull
       run: |
         dvc pull
-#
-#    - name: Setup latest DVC version
-#      uses: iterative/setup-dvc@v1
-
-#    - name: Do DVC pull on AWS storage
-#      env:
-#        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-#        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#      run: |
-#        dvc pull
-        
-#    - name: Set up Python ${{ matrix.python-version }}
-#      uses: actions/setup-python@v2
-#      with:
-#        python-version: ${{ matrix.python-version }}
-
         
     - name: Analysing the code with pylint
       run: |

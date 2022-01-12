@@ -23,7 +23,7 @@ async def say_hello():
     return {"greeting": "Hello World!"}
 
 
-@app.post("/predict/")
+@app.post("/predict_salary/")
 def predict_salary(data: CensusData):
     data = data.dict()
     age = data["age"]
@@ -35,7 +35,7 @@ def predict_salary(data: CensusData):
     x3_Female = data["x3_Female"]
     x3_Male = data["x3_Male"]
 
-    prediction = classifier.predict(
+    prediction = classifier.inference(
         [
             [
                 age,
