@@ -36,26 +36,27 @@ async def say_hello():
 
 
 @app.post("/predict_salary/")
-def predict_salary(data: CensusData = Body(None,
-                                           example={
-                                               "age": 39,
-                                               "workclass": "State-gov",
-                                               "fnlgt": 77516,
-                                               "education": "Bachelors",
-                                               "education_num": 13,
-                                               "marital_status": "Never-married",
-                                               "occupation": "Adm-clerical",
-                                               "relationship": "Not-in-family",
-                                               "race": "White",
-                                               "sex": "Male",
-                                               "capital_gain": 2174,
-                                               "capital_loss": 0,
-                                               "hours_per_week": 40,
-                                               "native_country": "United-States"
-                                           }
-                                           )):
-
-
+def predict_salary(
+    data: CensusData = Body(
+        None,
+        example={
+            "age": 39,
+            "workclass": "State-gov",
+            "fnlgt": 77516,
+            "education": "Bachelors",
+            "education_num": 13,
+            "marital_status": "Never-married",
+            "occupation": "Adm-clerical",
+            "relationship": "Not-in-family",
+            "race": "White",
+            "sex": "Male",
+            "capital_gain": 2174,
+            "capital_loss": 0,
+            "hours_per_week": 40,
+            "native_country": "United-States",
+        },
+    )
+):
 
     data_dict = {
         "age": [data.age],
@@ -79,7 +80,11 @@ def predict_salary(data: CensusData = Body(None,
     cat_features = categorical_features(data)
 
     X, _, _, _ = process_data(
-        data, categorical_features=cat_features, training=False, encoder=encoder, keep_cat=keep_cat
+        data,
+        categorical_features=cat_features,
+        training=False,
+        encoder=encoder,
+        keep_cat=keep_cat,
     )
 
     prediction = inference(classifier, X)

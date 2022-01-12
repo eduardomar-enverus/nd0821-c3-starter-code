@@ -55,7 +55,7 @@ predictions = clf.predict(X_test)
 y_test = lb.fit_transform(y_test.values).ravel()
 precision, recall, fbeta = compute_model_metrics(y_test, predictions)
 
-with open('general_output.txt', 'w') as f:
+with open("general_output.txt", "w") as f:
     with redirect_stdout(f):
         print("General metrics")
         print(f"Precision = {precision}")
