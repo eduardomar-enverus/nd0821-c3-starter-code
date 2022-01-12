@@ -1,45 +1,66 @@
+import json
+import os
+import pytest
+
 from fastapi.testclient import TestClient
 from main import app
 
 client = TestClient(app)
 
-
-fake_db1 = {
-    "age": 25,
-    "fnlgt": 30,
-    "education_num": 12,
-    "capital_gain": 20000,
-    "capital_loss": 0,
-    "hours_per_week": 40,
-    "x3_Female": "0",
-    "x3_Male": "1",
-}
+@pytest.fixture(scope='session')
+def greater_than_fifty():
+    fake_db1 = {
+        "age": 52,
+        "workclass": "Self-emp-not-inc",
+        "fnlgt": 209642,
+        "education": "HS-grad",
+        "education-num": 9,
+        "marital-status": "Married-civ-spouse",
+        "occupation": "Exec-managerial",
+        "relationship": "Husband",
+        "race": "White",
+        "sex": "Male",
+        "capital-gain": 0,
+        "capital-loss": 0,
+        "hours-per-week": 45,
+        "native-country": "United-States",
+        "salary": ">50K",
+    }
+    return fake_db1
 
 fake_db2 = {
-    "age": 40,
-    "fnlgt": 2.7224e05,
-    "education_num": 9,
-    "capital_gain": 0,
-    "capital_loss": 0,
-    "hours_per_week": 40,
-    "x3_Female": "1",
-    "x3_Male": "0",
+    "age": 50,
+    "workclass": "Self-emp-not-inc",
+    "fnlgt": 83311,
+    "education": "Bachelors",
+    "education-num": 13,
+    "marital-status": "Married-civ-spouse",
+    "occupation": "Exec-managerial",
+    "relationship": "Husband",
+    "race": "White",
+    "sex": "Male",
+    "capital-gain": 0,
+    "capital-loss": 0,
+    "hours-per-week": 13,
+    "native-country": "United-States",
+    "salary": "<=50K",
 }
 
 
 def test_get_path():
     r = client.get("/")
+    print(os.getcwd())
     assert r.status_code == 200
-    assert r.json() == {"greeting": "Hello World!"}
+    assert r.json() == "Hello World!"
 
 
-def test_pred():
-    r = client.post("/predict/", json=fake_db1)
-    assert r.status_code == 200
-    assert r.json() == {"prediction": ">50k"}
+def test_pred(greater_than_fifty):
+    r = client.post("/predict_salary/", json=greater_than_fifty)
+    # assert r.status_code == 200
+    assert r.json() == ">50K"
 
 
 def test_pred2():
-    r = client.post("/predict/", json=fake_db2)
+    r = client.post("/predict_salary/", json=fake_db2)
     assert r.status_code == 200
     assert r.json() == {"prediction": "<=50k"}

@@ -17,17 +17,25 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("rm -r .dvc .apt/usr/lib/dvc")
 
 
+def load_pickle(file):
+    with open(file, "rb") as f:
+        pickle_object = pickle.load(f)
+    return pickle_object
+
+
+model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model/model.pkl")
+encoder_path = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "model/encoder.pkl"
+)
+lb_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model/labeler.pkl")
+
+classifier = load_pickle(model_path)
+encoder = load_pickle(encoder_path)
+labeler = load_pickle(lb_path)
+
 # Create the app object
 app = FastAPI()
 
-pickle_in = open("./model/model.pkl", "rb")
-classifier = pickle.load(pickle_in)
-
-pickle_in = open("./model/encoder.pkl", "rb")
-encoder = pickle.load(pickle_in)
-
-pickle_in = open("./model/labeler.pkl", "rb")
-labeler = pickle.load(pickle_in)
 
 # 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get("/")

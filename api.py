@@ -27,4 +27,5 @@ dictionary = {
     "REQUEST BODY": json.dumps(sample_prediction),
     "STATUS CODE": response.status_code,
 }
+
 print(json.dumps(dictionary, indent=4))
