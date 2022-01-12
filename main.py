@@ -79,10 +79,9 @@ def predict_salary(data: CensusData = Body(None,
     cat_features = categorical_features(data)
 
     X, _, _, _ = process_data(
-        data, categorical_features=cat_features, training=False, encoder=encoder, keep_cat = keep_cat
+        data, categorical_features=cat_features, training=False, encoder=encoder, keep_cat=keep_cat
     )
 
-    prediction = inference(classifier, X.reshape(1, 104))
+    prediction = inference(classifier, X)
     prediction = labeler.inverse_transform(prediction)
-
     return prediction[0]
