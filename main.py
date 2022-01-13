@@ -29,13 +29,13 @@ encoder_path = os.path.join(
 )
 lb_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model/labeler.pkl")
 
-classifier = load_pickle(model_path)
-encoder = load_pickle(encoder_path)
-labeler = load_pickle(lb_path)
-
 # Create the app object
 app = FastAPI()
 
+# Loading pickles
+classifier = load_pickle(model_path)
+encoder = load_pickle(encoder_path)
+labeler = load_pickle(lb_path)
 
 @app.get("/")
 async def say_hello():

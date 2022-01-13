@@ -42,4 +42,4 @@ def test_inference():
     )
     predictions_model = clf.predict(X_array)
     expected_predictions = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-    np.array_equal(predictions_model, expected_predictions)
+    assert np.array_equal(predictions_model, expected_predictions)
