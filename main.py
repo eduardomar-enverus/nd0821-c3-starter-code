@@ -37,7 +37,6 @@ labeler = load_pickle(lb_path)
 app = FastAPI()
 
 
-# 3. Index route, opens automatically on http://127.0.0.1:8000
 @app.get("/")
 async def say_hello():
     return "Hello World!"

@@ -26,7 +26,7 @@ response = requests.post(URL, data=json.dumps(sample_prediction))
 dictionary = {
     "REQUEST BODY": json.dumps(sample_prediction),
     "STATUS CODE": response.status_code,
+    "PREDICTION": response.json()
 }
 
-print(json.dumps(dictionary))
-
+print(json.dumps(dictionary, indent=4))
