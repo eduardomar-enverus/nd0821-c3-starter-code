@@ -28,4 +28,5 @@ dictionary = {
     "STATUS CODE": response.status_code,
 }
 
-print(json.dumps(dictionary, indent=4))
+print(json.dumps(dictionary))
+
